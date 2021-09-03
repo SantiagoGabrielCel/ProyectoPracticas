@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="login.css">
+	<title>Login</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<nav class="navbar navbar-dark bg-dark">
+				</nav>
+				
+			</div>
+		</div>
+		
+		<div class="row justify-content-center pt-5 mt-5 mr-1 ">
+			<div class="col-8 col-md-6 col-sm-8 col-xl-6 col-lg-5 col-">
+
+				<form method="post">
+					<h1 class="text-center">Inicio sesion</h1>
+					<div class="form-group mx-sm-4">
+						<input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario">
+						<br>
+					    <input class="form-control" type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+					    <br>
+					    <input id="log" onclick= 'return validarRegex();' value="Iniciar Sesion" class="btn btn-block btn-danger">
+					    <br>
+			
+					</div>
+					
+					
+					<span id="error_sesion"></span>
+					<a href="" class="">Olvide mi contraseña</a>
+					<a href="model/registro.php">No estas registrado? Registrate!</a>
+					
+				</form>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<footer>
+					<div class=redes>
+						<h3>Redes sociales</h3>
+						<ul>
+							<li><img src="icono/facebook.png"><a href="">Seguinos En Facebook</a></li>
+            				<li><img src="icono/twitter.png"><a href="">Seguinos En Twitter</a></li>
+            				<li><img src="icono/instagram.png"><a href="">Seguinos En Instagram</a></li>
+            				<li><img src="icono/reddit.png"><a href="">Seguinos En Reddit</a></li>
+            			</ul>
+            			<p>©2020 Todos los derechos reservados || </p>
+            		</div>
+            	</footer>
+			</div>
+		</div>
+	</div>
+	<!-- 
+			$.ajax({
+				
+				
+			}-->
+	
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src='ValidacionExpresionesRegulares.js'></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="bootstrap/js/bootstrap.min.js" ></script>
+  <script>
+  	$(document).ready(function(){
+  		$('#log').click(function(){
+  			var usuario=$("#usuario").val();
+  			var contraseña=$("#contraseña").val();
+  			$.ajax({
+  				url: 'iniciosesion.php',
+  				data : { usuario: usuario , contraseña: contraseña },
+  				type : 'POST',
+  				beforeSend :function() {
+  					$('#log').val("Iniciando....");
+
+  				},
+  				success: function(data) {
+  					$('#log').val("Iniciar Sesion");
+					
+  					if (data==="0") {
+						
+  						$(location).attr('href','index.php');
+  					}
+  					else{
+						
+  						$('#error_sesion').html("<div class='alert alert-danger' role='alert'>Usuario o contraseña incorrecta!!</div>");
+  					}
+  				}
+  			});
+  			
+				
+		});
+  	});
+  </script>
+
+</body>
+</html>

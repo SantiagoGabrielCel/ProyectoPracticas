@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="icons/style.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+  </head>
+  <body>
+    <<div class="container">
+      <div class="row">
+        <div class="col-1">
+          <div class="sidebar">
+            <div class="logo_content">
+              <div class="logo"> 
+      
+              </div>
+      
+            </div>
+            <div class="profile_content">
+              <div class="profile">
+                <div class="profile_detaill">
+      
+                </div>
+      
+              </div>
+      
+            </div>
+            <ul class="nav">
+              <li>
+                <a href="#">
+                  <span class="name_item">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="name_item">Pedidos</span>
+                  <span class="icon-pedido"></span>
+                  
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="name_item">Productos</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="name_item">Usuarios</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="name_item">Categorias</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="name_item">Roles</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+        <div class="col-11">
+          <div class="buscador">
+            <input type="text" id="buscar_producto" placeholder="Buscar..">
+          </div>
+
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Agregar Producto</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table" id="tabla_resultado">
+            
+          </table>
+          
+            
+          
+        </div>
+      </div>
+    </div>
+   
+          
+
+        
+    
+    
+
+    
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/buscador.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?lsdku');
+  src:  url('fonts/icomoon.eot?lsdku#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?lsdku') format('truetype'),
+    url('fonts/icomoon.woff?lsdku') format('woff'),
+    url('fonts/icomoon.svg?lsdku#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pedido .path1:before {
+  content: "\e900";
+  color: rgb(239, 239, 239);
+}
+.icon-pedido .path2:before {
+  content: "\e901";
+  margin-left: -0.9423828125em;
+  color: rgb(255, 217, 199);
+}
+.icon-pedido .path3:before {
+  content: "\e902";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path4:before {
+  content: "\e903";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path5:before {
+  content: "\e904";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path6:before {
+  content: "\e905";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path7:before {
+  content: "\e906";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path8:before {
+  content: "\e907";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path9:before {
+  content: "\e908";
+  margin-left: -0.9423828125em;
+  color: rgb(77, 77, 77);
+}
+.icon-pedido .path10:before {
+  content: "\e909";
+  margin-left: -0.9423828125em;
+  color: rgb(242, 185, 167);
+}
+.icon-credit-card:before {
+  content: "\e90a";
+}
+.icon-shopping-cart:before {
+  content: "\e90b";
+}
