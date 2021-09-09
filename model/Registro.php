@@ -1,5 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 require_once("config.php");
 //$var = Db::conectar();
 
@@ -9,16 +14,16 @@ $Nombre = $Nombre_err =  "";
 $Apellido = $Apellido_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- echo"Hola1";
+ 
 
     if(empty(trim($_POST["username"]))){
         $username_err = "Por favor ingrese un usuario.";
     } else{
-         echo"Hola2";
+         
         $sql = "SELECT ID FROM tiendavirtual.usuarios WHERE usuario = ?";
-         echo"Hola3";
+        
         if($stmt = mysqli_prepare($link, $sql)){
-            echo"Hola4";
+            
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             
@@ -78,11 +83,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$param_Apellido = trim($_POST["Apellido"]);
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT);
-            echo $param_password;
+            //echo $param_password;
             try{
 				if(mysqli_stmt_execute($stmt)){
-					$var1='Exito';
-					header("location: login.html");
+					
+					//echo $Apellido;
+					$mail = new PHPMailer(true);
+					$mail->SMTPDebug = 2;                      
+					$mail->isSMTP();                                            
+					$mail->Host       = 'smtp.gmail.com'; 
+					$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+					$mail->Username   = 'appracticas312@gmail.com';                     //SMTP username
+					$mail->Password   = 'Beltran1234';
+					$mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+					$mail->Port       = 587;
+					$mail->SMTPOptions = array(
+						'ssl' => array(
+							'verify_peer' => false,
+							'verify_peer_name' => false,
+							'allow_self_signed' => true
+						)
+					);    
+					//Recipients
+					$mail->setFrom('appracticas312@gmail.com', 'Admin');
+					$mail->addAddress($param_username, $param_Apellido);     
+					
+					$mail->isHTML(true);                                  //Set email format to HTML
+					$mail->Subject = 'Bienvenido !';
+					$mail->Body    = 'Bienvenido : ' . $Apellido . '  <b>Su registro fue exitoso</b>';	
+					if(!$mail->Send()) {
+					  echo "Error al enviar";
+					  var_dump($mail);
+					} else {
+					  echo "Se envio con Exito";
+					  $var1='Exito';
+					  echo $var1;
+					}
+													
+					//header("location: ../login.html");
 				} else{
 					echo "Algo salió mal, por favor inténtalo de nuevo.";
 				}
@@ -93,17 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         
         mysqli_stmt_close($stmt);
-    }
-    if ($var1=='Exito')
-	{
-		$Destinatario = $username;
-		$Asunto = "Su Cuenta fue creada";
-		$Mensaje = "Su cuenta fue creada de manera exitosa";
-		$headers = "";
- 
-		mail($Destinatario, $Asunto, $Mensaje, $headers);		
-	}
-    
+    }    
     mysqli_close($link);
 }
 ?>
