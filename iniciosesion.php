@@ -8,21 +8,15 @@ if (mysqli_connect_errno()) {
 	exit();
 }
 
-//$consulta = mysqli_prepare($conexion, "CALL sp_in_login(?,?,@f)");
-//mysqli_stmt_bind_param($consulta, "ss", $usuario,$contraseña);
-//mysqli_stmt_execute($consulta);
-//mysqli_stmt_close($consulta);
-//$result = mysqli_query($conexion,'SELECT @f');
-//list($salida) = mysqli_fetch_row($result);
-//mysqli_free_result($result);
+
 
 $rs = $conexion->query( "CALL sp_in_login('".$usuario."', '".$contraseña."', @f, @r)" );
-$rs = $conexion->query( 'SELECT  @f' );
+$rs = $conexion->query( 'SELECT  @f, @r' );
 $row = mysqli_fetch_assoc($rs);
+$rol = $row['@r'];
 
-
-if ($row['@f'] != null) {
-		 echo "0";
+if ($row['@f'] != null and $row['@r'] != null) {
+		 echo $rol;
       } else {
          echo "1";
       }

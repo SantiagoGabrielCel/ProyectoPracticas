@@ -84,10 +84,14 @@
   				success: function(data) {
   					$('#log').val("Iniciar Sesion");
 					
-  					if (data==="0") {
+  					if (data==="2") {
 						
-  						$(location).attr('href','index.php');
+  						$(location).attr('href','view/template.html');
   					}
+					else if (data==="4"){
+						
+						$(location).attr('href','PruebaCliente.html');
+						}
   					else{
 						
   						$('#error_sesion').html("<div class='alert alert-danger' role='alert'>Usuario o contraseña incorrecta!!</div>");
