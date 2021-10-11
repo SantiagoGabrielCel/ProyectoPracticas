@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="login.css">
-	<title>Login</title>
+	<title>Doble autentificacion</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -20,21 +20,17 @@
 			<div class="col-8 col-md-6 col-sm-8 col-xl-6 col-lg-5 col-">
 
 				<form method="post">
-					<h1 class="text-center">Inicio sesion</h1>
+					<h1 class="text-center">Ingrese Codigo</h1>
 					<div class="form-group mx-sm-4">
-						<input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario">
+						<input class="form-control" type="text" name="CodigoMFA" id="CodigoMFA" placeholder="Codigo">
 						<br>
-					    <input class="form-control" type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
-					    <br>
-					    <input id="log" onclick= 'return validarRegex();' value="Iniciar Sesion" class="btn btn-block btn-danger">
+					    <input id="log" onclick= '' value="Ingresar" class="btn btn-block btn-danger">
 					    <br>
 			
 					</div>
 					
 					
 					<span id="error_sesion"></span>
-					<a href="model/RecuperarContraseña.php" class="">Olvide mi contraseña</a>
-					<a href="model/registro.php">No estas registrado? Registrate!</a>
 					
 				</form>
 
@@ -71,11 +67,10 @@
   <script>
   	$(document).ready(function(){
   		$('#log').click(function(){
-  			var usuario=$("#usuario").val();
-  			var contraseña=$("#contraseña").val();
+  			var CodigoMFA=$("#CodigoMFA").val();
   			$.ajax({
-  				url: 'iniciosesion.php',
-  				data : { usuario: usuario , contraseña: contraseña },
+  				url: 'model/DobleVerificacion.php',
+  				data : { CodigoMFA: CodigoMFA },
   				type : 'POST',
   				beforeSend :function() {
   					$('#log').val("Iniciando....");
@@ -86,7 +81,7 @@
 					
   					if (data==="2") {
 						
-  						$(location).attr('href','MFAPantalla.html');
+  						$(location).attr('href','view/template.html');
   					}
 					else if (data==="4"){
 						
@@ -94,7 +89,7 @@
 						}
   					else{
 						
-  						$('#error_sesion').html("<div class='alert alert-danger' role='alert'>Usuario o contraseña incorrecta!!</div>");
+  						$('#error_sesion').html("<div class='alert alert-danger' role='alert'>Codigo Invalido!!</div>");
   					}
   				}
   			});
